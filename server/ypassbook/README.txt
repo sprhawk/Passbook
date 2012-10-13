@@ -1,21 +1,16 @@
 ypassbook - an Apple Passbook pass generator
-============================================
 
 Usage
------
-0. install: easy_install ypassbook
 
 1. Learn required infomation from [Apple](https://developer.apple.com/passbook/)
 
 2. In your Keychain Access, export your Pass certificate into .p12 file (like pass.com.your.cert.p12), and Apple Worldwide Developer Relations certificate into .pem file (like AppleWWDR.pem)
 
 3. Convert your p12 files into PEMs:
-```
     openssl pkcs12 -in "pass.com.your.cert.p12" -clcerts -nokeys -out "pass.com.your.cert.pem"
     openssl pkcs12 -in "pass.com.your.cert.p12" -nocerts -out "pass.com.your.key.pem"
-```
+
 4. Create your pass object and save it into a .pkpass file.
-```python
     p = Pass(Pass.EVENTTICKET, description, organizationName, passTypeId, teamId, serialNumber)
     f = Field(key, value, label)
     p.addPrimaryField(f)
@@ -35,9 +30,6 @@ Usage
     zipdata = p.getSignedPass(wwdr_data, cert_data, key_data, Passphrase)
     
     open("test.pkpass", "wb").write(zipdata) #save your pkpass file or send the data to your client
-```
 
-    see test.py and testpass.py as an example
 
-> python pypi url: http://pypi.python.org/pypi/ypassbook
-
+    see https://github.com/sprhawk/Passbook for more information

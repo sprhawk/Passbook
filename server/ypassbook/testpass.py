@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from passbook import *
+from ypassbook import *
 import uuid
 import os
 from datetime import datetime
