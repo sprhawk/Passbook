@@ -8,7 +8,7 @@ setup(
     author = "Yang Hongbo",
     author_email = "hongbo@yang.me",
     url = "http://pypi.python.org/pypi/ypassbook",
-    
+    requires = ["M2Crypto"], 
     keywords = ["apple", "passbook", "ios"],
     classifiers = [
         "Programming Language :: Python",
@@ -24,5 +24,6 @@ long_description = """\
 ypassbook - An Apple Passbook pass generator
 --------------------------------------------
 
+http://github.com/sprhawk/Passbook
 """
     )
