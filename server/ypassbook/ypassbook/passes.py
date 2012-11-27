@@ -36,6 +36,7 @@ from M2Crypto import SMIME
 from M2Crypto import X509
 from M2Crypto.X509 import X509_Stack
 from zipfile import ZipFile
+from contextlib import closing
 import cStringIO
 
 class Pass:
@@ -328,7 +329,7 @@ class Pass:
 
     def zipPackage(self, package):
         buffer = cStringIO.StringIO()
-        with ZipFile(buffer, 'w') as zip:
+        with closing(ZipFile(buffer, 'w')) as zip:
             for filepath, data in package.iteritems():
                 zip.writestr(filepath, data)
         zipdata = buffer.getvalue()
