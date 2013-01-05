@@ -12,7 +12,6 @@ if __name__ == "__main__":
     certfile=  "your.cert.pem"
     wwdrfile=  "AppleWWDRCA.pem"
     p = testpass.getTestPass()
-    p.savePackage()
     wwdr = open(wwdrfile, 'rb').read()
     cert = open(certfile, 'rb').read()
     key = open(keyfile, 'rb').read()
