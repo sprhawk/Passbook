@@ -208,7 +208,7 @@ class Pass:
             pass_dict['relevantDate'] = self.relevantDate
 
         if self.transitType:
-            pass_dict['transitType'] = self.transitType
+           self.styleKeys['transitType'] = self.transitType
 
         #no value checks
         if self.styleKeys:
