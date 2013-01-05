@@ -4,6 +4,7 @@ ypassbook - an Apple Passbook pass generator
 Usage
 -----
 0. install: easy_install ypassbook
+            easy_install M2Crypto
 
 1. Learn required infomation from [Apple](https://developer.apple.com/passbook/)
 
