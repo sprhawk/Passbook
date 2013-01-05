@@ -207,10 +207,13 @@ class Pass:
         if self.relevantDate:
             pass_dict['relevantDate'] = self.relevantDate
 
+        if self.transitType:
+            pass_dict['transitType'] = self.transitType
+
         #no value checks
         if self.styleKeys:
             if self.type == Pass.BOARDINGPASS and "transitType" not in self.styleKeys:
-                self.styleKeys['transitType'] = self.PKTRANSIT_TYPE_GENERIC
+                self.styleKeys['transitType'] = Pass.PKTRANSIT_TYPE_GENERIC
             pass_dict[self.type] = self.styleKeys
 
         #Visual Appearance Keys
