@@ -328,15 +328,15 @@ class Pass:
         return der
 
     def zipPackageIO(self, package):
-        buffer = cStringIO.StringIO()
-        with closing(ZipFile(buffer, 'w')) as zip:
+        buf = cStringIO.StringIO()
+        with closing(ZipFile(buf, 'w')) as zipdata:
             for filepath, data in package.iteritems():
-                zip.writestr(filepath, data)
-        return buffer
+                zipdata.writestr(filepath, data)
+        return buf
 
     def zipPackage(self, package):
-        buffer = self.zipPackageIO(package)
-        zipdata = buffer.getvalue()
+        buf = self.zipPackageIO(package)
+        zipdata = buf.getvalue()
         return zipdata
 
     def getSignedPass(self, wwdrcert, cert, key, passphrase = None):
