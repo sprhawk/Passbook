@@ -327,16 +327,24 @@ class Pass:
         der = ''.join(l.strip() for l in pem.read().split('----')[2].splitlines()).decode('base64')
         return der
 
-    def zipPackage(self, package):
+    def zipPackageIO(self, package):
         buffer = cStringIO.StringIO()
         with closing(ZipFile(buffer, 'w')) as zip:
             for filepath, data in package.iteritems():
                 zip.writestr(filepath, data)
+        return buffer
+
+    def zipPackage(self, package):
+        buffer = self.zipPackageIO(package)
         zipdata = buffer.getvalue()
-        buffer.close()
         return zipdata
 
     def getSignedPass(self, wwdrcert, cert, key, passphrase = None):
+        zipIO = self.getSignedPassIO(wwdrcert, cert, key, passphrase)
+        data = zipIO.getvalue()
+        return data
+
+    def getSignedPassIO(self, wwdrcert, cert, key, passphrass = None):
         if not (self.type and self.description and self.organizationName, self.passTypeIdentifier, self.teamIdentifier and self.serialNumber and self.formatVersion):
             raise ValueError #values are required
 
@@ -344,5 +352,5 @@ class Pass:
         manifest = package["manifest.json"]
         signature = self.sign(manifest, wwdrcert, cert, key, passphrase)
         package["signature"] = signature
-        return self.zipPackage(package)
+        return self.zipPackageIO(package)
         

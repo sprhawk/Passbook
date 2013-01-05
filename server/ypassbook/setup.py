@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name = "ypassbook",
     packages = ["ypassbook"],
-    version = "0.1.1",
+    version = "0.1.2",
     description = "Create an Apple passbook",
     author = "Yang Hongbo",
     author_email = "hongbo@yang.me",
