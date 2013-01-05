@@ -16,7 +16,7 @@ Usage
     p.addPrimaryField(f)
     p.setLocalizedString(locale, label, labelValue)
 
-    imagename = "icon.png" #must be icon.png
+    imagename = "icon.png" #must have an icon, and must be icon.png
     p.setImage(imagename, imagedata)
 
     p.logoText = "Your logo text"
