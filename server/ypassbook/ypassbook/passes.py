@@ -344,7 +344,7 @@ class Pass:
         data = zipIO.getvalue()
         return data
 
-    def getSignedPassIO(self, wwdrcert, cert, key, passphrass = None):
+    def getSignedPassIO(self, wwdrcert, cert, key, passphrase = None):
         if not (self.type and self.description and self.organizationName, self.passTypeIdentifier, self.teamIdentifier and self.serialNumber and self.formatVersion):
             raise ValueError #values are required
 
